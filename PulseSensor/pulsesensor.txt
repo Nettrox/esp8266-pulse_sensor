@@ -1,0 +1,28 @@
+const int PulseSensorHRWire = A0; 
+const int LED_D1 = D1; 
+int Threshold = 550; 
+int Signal; 
+
+
+
+void setup() {
+  Serial.begin(115200); 
+  pinMode(LED_D1,OUTPUT); 
+}
+
+
+
+void loop() {
+  Signal = analogRead(PulseSensorHRWire); //--> Read the PulseSensor's value.
+
+  Serial.println(Signal); 
+
+  if(Signal > Threshold){ 
+    digitalWrite(LED_D1,HIGH);
+    delay(100);
+  } else {
+    digitalWrite(LED_D1,LOW); 
+  }
+
+  delay(50);
+}
